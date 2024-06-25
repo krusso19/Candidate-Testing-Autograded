@@ -19,12 +19,12 @@ let candidateAnswers;
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-let candidateName = input.question("Enter your name: ")
+ candidateName = input.question("Enter your name: ")
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-let candidateAnswer = input.question(question)
+ candidateAnswer = input.question(question)
 
 }
 
@@ -47,7 +47,7 @@ if (candidateAnswer === correctAnswer) {
 function runProgram() {
   askForName();
   // TODO 1.1c: Greet candidate using their name //
-   console.log("Welcome, ",candidateName," .");
+   console.log(`Welcome, ${candidateName}.`);
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
