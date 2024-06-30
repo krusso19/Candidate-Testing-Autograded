@@ -56,8 +56,14 @@ function gradeQuiz(candidateAnswers) {
   // Here it is an array: console.log(candidateAnswers)
   // in conclusion, I forgot the () after .toLowerCase 
 
+  /* This code takes three or Three as a correct answer for Question 5. But, it then tells you you answered 3 not three or Three.
+  if (candidateAnswers[4] === "three" || "Three") {
+    candidateAnswers.splice(4,1,"3")
+  }
+    */
 
   let numberOfCorrectAnswers = []
+  console.log(`Candidate Name: ${candidateName}`)
   for (let i = 0; i < 5; i++){
     if (candidateAnswers[i].toUpperCase() === correctAnswers[i].toUpperCase()){
       console.log(`${i+1}) ${questions[i]}
