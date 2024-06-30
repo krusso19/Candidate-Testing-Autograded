@@ -35,16 +35,14 @@ function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
  for (let i = 0; i < 5; i++) {
   candidateAnswers[i] = input.question(questions[i])
-
  }
- //KT - I don't seem to need this. Not sure why return candidateAnswers
 
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  // let numberOf... isnt really working. the answer is the variable in the for loop.
+  // A documentation of my struggles: let numberOf... isnt really working. the answer is the variable in the for loop.
   // the loop here is not asking the questions. just grading them! and focused on the return!
   // if the console.log(numberOf...) is inside the fuction it prints after every question.
   // let and console.log must both be inside or outside of the function
@@ -52,59 +50,43 @@ function gradeQuiz(candidateAnswers) {
   // my else isn't running... why? it doesn't run when I add the .toLowerCase
   //.toLowerCase is not being a function? is candidateAnswer a string? Because CandidateAnwers is a parameter in line 44 function. So it is not a string...
   // this code made the candidateAnswer a string String(candidateAnswers[i]).toLowerCase
+  // candidateAnswers is a parameter below the function gradeQuiz so it is not a string and cannot be converted toUpperCase or toLowerCase
+  // Trying to change the array before this for loop
+  // here, candidate Answers is a parameter: console.log("candidateAnswers Array:" + candidateAnswers)
+  // Here it is an array: console.log(candidateAnswers)
+  // in conclusion, I forgot the () after .toLowerCase 
+
 
   let numberOfCorrectAnswers = []
   for (let i = 0; i < 5; i++){
-    if (candidateAnswers[i] === correctAnswers[i]){
-      console.log(`Question ${i+1} is correct`)
-      numberOfCorrectAnswers.push(1)
-    } else {
-      console.log(`Question ${i+1} is incorrect`)
-    }
-  }
-  console.log(numberOfCorrectAnswers)
-    
-    
-  /* 
-  // watch this curly bracket when I add it back in. This all works but without the toLowerCase... above is simpler for debugging
-  {
-  
-  
-  if ((candidateAnswers[i].toLowerCase) === correctAnswers[i].toLowerCase) {
+    if (candidateAnswers[i].toUpperCase() === correctAnswers[i].toUpperCase()){
       console.log(`${i+1}) ${questions[i]}
     Your Answer: ${candidateAnswers[i]}
     Correct Answer: ${correctAnswers[i]}
-    Result: Correct`);
-    console.log(1);
-  } else {
-    console.log(`${i+1}) ${questions[i]}
+    Result: Correct`)
+      numberOfCorrectAnswers.push(1)
+    } else {
+      console.log(`${i+1}) ${questions[i]}
       Your Answer: ${candidateAnswers[i]}
       Correct Answer: ${correctAnswers[i]}
-      Result: Incorrect`);
-      console.log(0);
+      Result: Incorrect`)
+    }
   }
-}
-  console.log("Number Correct: " + numberOfCorrectAnswers)
-
-*/
+    
   let grade;  //TODO 3.2 use this variable to calculate the candidates score.
 grade = (((numberOfCorrectAnswers.length)/5)*100)
-console.log(grade)
-
-// this if statement returns the correct statements according to grade.
 
 if (grade >= 80) {
   console.log(`Congratulations, ${candidateName}! You have passed the test with a score of ${grade}%.
-    >>> Overall Grade: ${grade}% (X of Y responses correct)<<<
+    >>> Overall Grade: ${grade}% (${numberOfCorrectAnswers.length} of 5 responses correct)<<<
     >>> Status: PASSED <<<`)
 } else {
   console.log(`${candidateName}, you completed the test with a score of ${grade}% and did not pass the test. Please try again!
-    >>> Overall Grade: ${grade}% (X of Y responses correct)<<<
+    >>> Overall Grade: ${grade}% (${numberOfCorrectAnswers.length} of 5 responses correct)<<<
     >>> Status: FAILED <<<`)
 } 
     return grade;
   }    
-// KT The above curly bracket and return grade used to be just under let grade by line 90
 
 
 function runProgram() {
